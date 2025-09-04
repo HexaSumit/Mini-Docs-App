@@ -1,5 +1,6 @@
 import Card from "./Card"
 import type { DataItem } from "../types/DataTypes"
+import { useRef } from "react"
 
 const Foreground = () => {
     const data:DataItem[]=[
@@ -22,15 +23,16 @@ const Foreground = () => {
            tag:{isOpen:true,tagTitle:'Download Now',tagColor:'blue'}
         },
     ]
+    const ref=useRef<HTMLDivElement>(null)
     return (
-        <div>
+            <>
             {/* FOREGROUND COMP */}
-            <div className=' absolute inset-0 z-10 p-2'>
+            <div ref={ref} className=' fixed top-0 left-0 inset-0 z-10 p-2'>
                 <div className=" flex gap-5 flex-wrap">
-                    {data.map((item,index)=>(<Card data={item} key={index}/>))}
+                    {data.map((item,index)=>(<Card data={item} key={index} reference={ref}/>))}
                 </div>
             </div>
-        </div>
+            </>
     )
 }
 
