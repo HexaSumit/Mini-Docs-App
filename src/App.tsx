@@ -6,10 +6,9 @@ function App() {
 
   return (
     <>
-      <div className='relative  w-full h-screen'>
+      <div className=' bg-gray-200/70 relative w-full h-screen'>
         <Background />
         <Foreground />
-
       </div>
     </>
   )
