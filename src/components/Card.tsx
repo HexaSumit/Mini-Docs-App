@@ -1,17 +1,21 @@
+import type React from "react";
 import { FaRegFileAlt } from "react-icons/fa";
 import { RxCross2 } from 'react-icons/rx';
 import { MdOutlineDownload } from "react-icons/md";
 import type { DataItem } from "../types/DataTypes";
 
+import { motion } from "framer-motion"
+
 interface CardProps{
     data:DataItem;
+    reference: React.RefObject<HTMLDivElement | null>
 }
 
-const Card = ({ data }:CardProps) => {
+const Card = ({ data ,reference}:CardProps) => {
     return (
         <div >
             {/* Card Component */}
-            <div className="w-48 h-56 rounded-3xl bg-gray-100 shadow-md flex flex-col overflow-hidden m-3">
+            <motion.div drag dragConstraints={reference} whileDrag={{scale:1.2}} dragElastic={0.2} className="w-48 h-56 rounded-3xl bg-gray-100 shadow-md flex flex-col overflow-hidden m-3">
                 {/* FILE ICON */}
                 <div className="px-4 pt-4">
                     <FaRegFileAlt className="text-lg" />
@@ -42,7 +46,7 @@ const Card = ({ data }:CardProps) => {
                     </div>
                 )}
 
-            </div>
+            </motion.div>
         </div>
     )
 }
